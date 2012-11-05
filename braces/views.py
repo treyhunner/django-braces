@@ -312,9 +312,7 @@ class SelectRelatedMixin(object):
         queryset = super(SelectRelatedMixin, self).get_queryset()
 
         # Return the queryset with a comma-joined argument to `select_related`.
-        return queryset.select_related(
-            ", ".join(self.select_related)
-        )
+        return queryset.select_related(*self.select_related)
 
 
 class StaffuserRequiredMixin(object):
